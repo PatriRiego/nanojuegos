@@ -1,0 +1,35 @@
+{%extends 'layout.html'%}
+
+
+{%block titulo%}Lista de estudiantes{%endblock%}
+
+{%block cabecera%}
+<h3>{{mensaje}}</h3>
+{%endblock%}
+
+{%block cuerpo%}
+
+
+
+<br><br>
+
+<table id = "tabla">
+   <thead>
+      {% for col in columnas %}
+      <th>{{col.capitalize()}}</th>
+      {% endfor %}
+   </thead>
+   
+   {% for fila in filas %}
+      <tr>
+         {% for col in columnas %}
+         <td>{{fila[col]}}</td>
+         {% endfor %}
+      </tr>
+   {% endfor %}
+</table>
+
+<br>
+<a href = "{{url_for('home')}}">Volver a la página principal</a>
+
+{%endblock%}

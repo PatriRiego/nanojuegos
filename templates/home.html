@@ -1,0 +1,18 @@
+{%extends 'layout.html'%}
+
+{%block titulo%}Home{%endblock%}
+
+{%block cabecera%}
+<br>
+Bienvenido a nuestra página de juegos.
+{%endblock%}
+
+
+{%block cuerpo%}
+
+<p>Selecciona un juego:</p>
+{%for nombre,url in juegos.items()%}
+<a href = '{{url_for(url)}}'>{{nombre}}</a>
+{%endfor%}
+
+{%endblock%}
