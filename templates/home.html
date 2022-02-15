@@ -1,18 +1,18 @@
 {%extends 'layout.html'%}
 
-{%block titulo%}Home{%endblock%}
+{%block titulo%}Bienvenida{%endblock%}
 
 {%block cabecera%}
 <br>
-Bienvenido a nuestra página de juegos.
+¡Hola, {{nombre}}!
 {%endblock%}
 
 
 {%block cuerpo%}
 
 <p>Selecciona un juego:</p>
-{%for nombre,url in juegos.items()%}
-<a href = '{{url_for(url)}}'>{{nombre}}</a>
+{%for juego,url in juegos.items()%}
+<a href = '{{url_for(url)}}'>{{juego}}</a>
 {%endfor%}
 
 {%endblock%}

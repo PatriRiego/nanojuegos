@@ -3,15 +3,15 @@ import sqlite3 as sql
 def crear_tablas():
     conn = sql.connect('database.db') # Si existe, se conecta a ella; si no existe, la crea
     # print("Base de datos abierta.") # muestra en la prompt este mensaje
-    conn.execute('CREATE TABLE IF NOT EXISTS adivina_numero (fecha DATETIME, intentos INTEGER)') 
+    conn.execute('CREATE TABLE IF NOT EXISTS adivina_numero (nombre TEXT, fecha DATETIME, intentos INTEGER)') 
     conn.close() # cierra la conexion a la base de datos
     # print("Base de datos cerrada.")
 
-def insert_adivina_numero(fecha,intentos):
+def insert_adivina_numero(nombre,fecha,intentos):
     try: # Lo intentamos
         with sql.connect("database.db") as con:
             cur = con.cursor()
-            cur.execute("INSERT INTO adivina_numero (fecha, intentos) VALUES (?,?)",(fecha,intentos))
+            cur.execute("INSERT INTO adivina_numero (nombre, fecha, intentos) VALUES (?,?,?)",(nombre,fecha,intentos))
             con.commit()
         msg = "Se ha añadido el registro" # si lo conseguimos, saca un mensaje
     except: # Si no podemos insertar los datos en la base de datos
